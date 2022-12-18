@@ -1,0 +1,90 @@
+package practicas_metodos;
+// hacer un menu de papas, bebidas, cafe, tarta
+//muestrame el indice del valor y del nombre del producto que se compro.
+
+import java.util.Scanner;
+
+public class metodos_con_arreglos {
+
+    static Scanner entrada = new Scanner(System.in);
+//////////////////////////////////////////////////////////////////////////////////77
+    static String[] Menu2 = {"1)papas", "2)bebidas", "3)cafe", "4)tarta"};
+////////////////////////////////////////////////////////////////////////////////////////
+
+    public static String Menu_() {
+        String[] Menu = {"1)papas", "2)bebidas", "3)cafe", "4)tarta", "0)salir"};
+        for (String Menu1 : Menu) {
+            System.out.println(Menu1);
+        }
+        return "bienvenido";
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////
+    static int[] valor = {600, 500, 100, 200};
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static void Principal() {
+        int opcion = 0;
+        int valor1 = 0;
+//////////////////////////////////////////////////////////////////////////////////////////////////        
+        do {
+            System.out.println(Menu_());
+            opcion = entrada.nextInt();
+/////////////////////////////////////////////////////////////////////////////////////////////////
+            switch (opcion) {
+                case 1:
+                    System.out.println(Menu2[0] + " valor $" + valor[0]);
+                    valor1 = entrada.nextInt();
+
+                    if (valor1 >= valor[0]) {
+                        System.out.println("gracias por su compra de las papas");
+                        System.out.println(" su vuelto  " + (valor1 - valor[0]));
+                    } else {
+                        System.out.println("no tiene dinero suficiente");
+                    }
+                    break;
+//////////////////////////////////////////////////////////////////////////////
+                case 2:
+                    System.out.println(Menu2[1] + " valor  $" + valor[1]);
+                    valor1 = entrada.nextInt();
+                    if (valor1 >= valor[1]) {
+                        System.out.println("gracias por su compra de la bebidas");
+                        System.out.println("su vuelto es de $" + (valor1 - valor[1]));
+                    } else {
+                        System.out.println("no tiene dinero suficiente");
+                    }
+                    break;
+//////////////////////////////////////////////////////////////////////////////////////////////////////77
+                case 3:
+                    System.out.println(Menu2[2] + " valor $" + valor[2]);
+                    valor1 = entrada.nextInt();
+                    if (valor1 >= valor[2]) {
+                        System.out.println("gracias por su compra del cafe");
+                        System.out.println("su vuelto $" + (valor1 - valor[2]));
+                    } else {
+                        System.out.println("no tiene dinero suficiente");
+                    }
+                    break;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////                    
+                case 4:
+                    System.out.println(Menu2[3] + " valor $" + valor[3]);
+                    valor1 = entrada.nextInt();
+                    if (valor1 >= valor[3]) {
+                        System.out.println("gracias por su compra de la tarta");
+                        System.out.println("su vuelto $" + (valor1 - valor[3]));
+                    } else {
+                        System.out.println("no tiene dinero suficiente");
+                    }
+                    break;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            }
+
+        } while (opcion != 0);
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static void main(String[] args) {
+        Principal();
+    }
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
