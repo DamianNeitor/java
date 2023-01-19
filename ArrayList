@@ -1,0 +1,113 @@
+package explicaciongringa;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Aprendiendo {
+                                     
+    static String lista_fruta[] = {"manzana", "platano", "uva", "mandarina", "cacao", "carrito de compra", " salir"};
+    static int lista_precio_fruta[] = {1000, 2000, 5000, 7000, 10000};
+    static int lista_cantidad[] = {0, 0, 0, 0, 0};
+    static String lista_pago[] = {"pagar con efectivo", "pagar con credito", "pagar con debito"};
+    static int cantidad_fruta = 0, tipodepago = 0, nuevo = 0, resultado_del_descuento = 0, descuento_menos_precio = 0;
+    static Scanner entrada = new Scanner(System.in);
+    static List<String> carrito = new ArrayList<>();
+    static int total_Cantidad;
+
+    public static void main(String[] args) {
+        comprar();
+    }
+
+    public static void menu() {
+        for (int i = 0; i < lista_fruta.length; i++) {
+            System.out.println("" + (1 + i) + ")" + lista_fruta[i]);
+        }
+    }
+    
+    public static void pago(){
+        
+    for (int i=0; i<lista_pago.length;i++){
+        System.out.println("" + lista_pago[i]);
+    }
+        
+    }
+
+    public static String comprar() {
+        int opcion = -1;
+
+        do {
+            menu();
+            opcion = entrada.nextInt();
+            if (opcion == 6) {
+                mostrar();
+            } else if (opcion == 7) {
+                System.out.println("fin del programa");
+                System.exit(opcion);
+
+            } else {
+                System.out.println("ingrese la cantidad de fruta que desea llevar:");
+                cantidad_fruta = entrada.nextInt();
+                System.out.println("Total cantidad de frutas =" + (cantidad_fruta + lista_cantidad[opcion - 1]));
+                total_Cantidad = cantidad_fruta * lista_precio_fruta[opcion - 1];
+                lista_cantidad[opcion - 1] += cantidad_fruta;
+                System.out.println("-----------------------------------------------------------------------------------");
+                System.out.println("total de fruta a pagar = " + total_Cantidad + " de las " + lista_fruta[opcion - 1]);
+                System.out.println("---------------------------------------------------------------------------------");
+                System.out.print("presione con que metodo de pago quiere hacer");
+                pago();
+                tipodepago = entrada.nextInt();
+
+                if (tipodepago == 1) {
+                    System.out.println("_____________________________________________________________________");
+                    System.out.println("as escojido pagar con efectivo no hay descuento");
+                    System.out.println("________________________________________________________________");
+                    System.out.println("total a pagar " + total_Cantidad);
+                    String nueva = String.valueOf(total_Cantidad);
+                    carrito.add("la cantidad de =" + lista_fruta[opcion - 1] + " " + cantidad_fruta + " precio " + nueva);
+                }
+                if (tipodepago == 2) {
+                    System.out.println("_____________________________________________________________________");
+                    System.out.println("pagar con credito es un 15%. de descuento");
+                    resultado_del_descuento = (total_Cantidad / (100 / 15));
+                    descuento_menos_precio = total_Cantidad - resultado_del_descuento;
+                    String nueva = String.valueOf(descuento_menos_precio);
+                    System.out.println("________________________________________________________________");
+                    System.out.println("total a pagar " + descuento_menos_precio);
+                    carrito.add(lista_fruta[opcion - 1] + " precio " + descuento_menos_precio);
+
+                }if(tipodepago == 3){
+                    System.out.println("______________________________________________________________________");
+                    System.out.println("pagar con debito es 10% de descuento");
+                    resultado_del_descuento=(total_Cantidad/ (100/10));
+                    descuento_menos_precio=total_Cantidad - resultado_del_descuento;
+                 String nuevas=String.valueOf(descuento_menos_precio);
+                  System.out.println("total a pagar " + descuento_menos_precio);
+                 carrito.add("la cantidad de=" + lista_fruta[opcion -1] +""+cantidad_fruta + "precio"+nuevas);
+                    break;
+                }
+            }
+        } while (opcion != 7);
+
+        return comprar();
+    }
+
+    public static void mostrar() {
+        if (carrito.size() <= 0) {
+            System.out.println("No hay nada que mostrar");
+
+        } else {
+
+            for (int i = 0; i < carrito.size(); i++) {
+                try {
+
+                    System.out.println("Lista*" + (i + 1) + ": " + carrito.get(i));
+
+                } catch (Exception e) {
+
+                    comprar();
+                }
+            }
+        }
+    }
+}
