@@ -1,0 +1,67 @@
+package explicaciongringa;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class AprendiendoDos {
+
+    static String menu[] = {"1)Crear lista", "2)mostrar ", "3)salir"};
+    static List<String> almacen = new ArrayList<>();
+    static Scanner entrada = new Scanner(System.in);
+    static String escribir;
+    static int opcion;
+
+    public static void main(String[] args) {
+        principal();
+
+    }
+
+    public static void mostrar_menu() {
+
+        for (int i = 0; i < menu.length; i++) {
+            System.out.println(menu[i]);
+
+        }
+    }
+
+    public static void principal() {
+        do {
+            mostrar_menu();
+            opcion = entrada.nextInt();
+            if (opcion == 3) {
+                System.out.println("salistes");
+                System.exit(opcion);
+            }
+            if (opcion == 2) {
+                mostrar();
+            } else {
+                System.out.println("cree la lista del supermercado");
+                escribir = entrada.nextLine();
+                escribir = entrada.nextLine();
+
+                almacen.add(escribir);
+
+            }
+
+        } while (opcion != 3);
+
+    }
+
+    public static void mostrar() {
+        if (almacen.size() == 0) {
+            System.out.println("no hay nada que mostrar perro");
+
+        } else {
+            for (int i = 0; i < almacen.size(); i++) {
+
+                System.out.println("_____________________________________");
+                System.out.println("la lista de compra " + (i + 1) + ")" + " es;");
+                System.out.println(almacen.get(i));
+                System.out.println("_____________________________________");
+
+            }
+        }
+
+    }
+}
