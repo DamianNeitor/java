@@ -1,0 +1,43 @@
+    Scanner entrada = new Scanner(System.in);
+    int aumentarDinero, guardar;
+
+    public int aumentarDinero() {
+        System.out.println("ingrese dinero a guardar");
+        guardar = entrada.nextInt();
+        aumentarDinero = aumentarDinero + guardar;
+        return aumentarDinero;
+    }
+
+    public int desaumentarDinero() {
+        System.out.println("ingrese dinero a retirar ");
+        guardar = entrada.nextInt();
+        aumentarDinero = aumentarDinero - guardar;
+        return aumentarDinero;
+    }
+    
+    public String mostrar(){
+        return"sus saldo es "+aumentarDinero;
+    }
+
+    public void menu() {
+        while (true) {
+            System.out.println("--menu--");
+            System.out.println("1)ingresar dinero ");
+            System.out.println("2) retirar dinero ");
+            System.out.println("3) mostrar dinero");
+            int opcion = entrada.nextInt();
+            switch (opcion) {
+                case 1:
+                    System.out.println(aumentarDinero());
+
+                    break;
+                case 2:
+                    System.out.println(desaumentarDinero());
+                    break;
+                case 3:
+                 
+                    System.out.println(mostrar());
+                    
+            }
+        }
+    }
